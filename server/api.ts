@@ -5,7 +5,7 @@ import {CONFIG, avm, bintools} from './ava'
 const axios = require('axios').default;
 const {sendAvaC, CONFIG_C} = require("./eth");
 const Web3 = require("web3");
-import {BN} from 'avalanche'
+import {BN} from 'ezchainjs2'
 import {getAddressChain, sendDrop, sendDropX} from "./helpers/helper";
 import ApiHelper from "./helpers/apiHelper";
 // const AVA = require('./ava');
@@ -20,7 +20,7 @@ router.get('/howmuch', (req: any, res: any) => {
 
 router.post('/token_custom', async (req: any, res: any) =>{
     let apiKey = req.body.key;
-    let amount = req.body.amount; // in nAVAX
+    let amount = req.body.amount; // in nEZC
     let to = req.body.to; // must be valid X or C chain address
 
     ApiHelper.tokenCustom(apiKey,amount,to).then(txID => {

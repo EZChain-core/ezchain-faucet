@@ -1,5 +1,5 @@
 import {parseEvmBechAddress} from "./helpers/helper";
-import {BN} from "avalanche";
+import {BN} from "ezchainjs2";
 
 const Web3 = require('web3');
 

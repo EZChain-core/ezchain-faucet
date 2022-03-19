@@ -1,4 +1,4 @@
-const avalanche = require("avalanche");
+const ezchainjs2 = require("ezchainjs2");
 const BN = require('bn.js');
 
 
@@ -16,9 +16,9 @@ const DROP_SIZE =  process.env.DROP_SIZE_X || 100; // how much of the given asse
 const AVAX_FEE =  process.env.AVAX_FEE || 0; // how much of the given asset to transfer from the faucet
 const CAPTCHA_SECRET = process.env.CAPTCHA_SECRET;
 
-let bintools = avalanche.BinTools.getInstance();
+let bintools = ezchainjs2.BinTools.getInstance();
 
-let ava = new avalanche.Avalanche(AVA_IP, parseInt(AVA_PORT), AVA_PROTOCOL, parseInt(AVA_NETWORK_ID), AVA_CHAIN_ID);
+let ava = new ezchainjs2.Avalanche(AVA_IP, parseInt(AVA_PORT), AVA_PROTOCOL, parseInt(AVA_NETWORK_ID), AVA_CHAIN_ID);
 let avm = ava.XChain();
     avm.setTxFee(new BN(AVAX_FEE));
 
@@ -67,7 +67,7 @@ printXInfo();
 
 async function checkAssetId(){
     if(!CONFIG.ASSET_ID){
-        let res = await avm.getAssetDescription('AVAX');
+        let res = await avm.getAssetDescription('EZC');
         CONFIG.ASSET_ID = bintools.cb58Encode(res.assetID);
         console.log("Updated Asset Id: ",CONFIG.ASSET_ID);
     }else{

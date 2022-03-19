@@ -4,7 +4,7 @@
             <v-card class="card" :loading="isAjax">
                 <v-img src="/og_banner.png" height="140"></v-img>
                 <v-card-title>
-                    AVAX Fuji Testnet Faucet
+                    EZChain Testnet Faucet
                 </v-card-title>
 
 
@@ -22,7 +22,7 @@
                     <v-alert type="error" dense outlined>
                         This is a beta faucet. Funds are not real.
                     </v-alert>
-                    <v-btn class="submit" @click="onSubmit" block :loading="isAjax" depressed :disabled="!canSubmit">REQUEST {{dropSize}} AVAX</v-btn>
+                    <v-btn class="submit" @click="onSubmit" block :loading="isAjax" depressed :disabled="!canSubmit">REQUEST {{dropSize}} EZC</v-btn>
                 </v-card-text>
 
 
@@ -49,8 +49,8 @@
     import {QrInput} from '@avalabs/vue_components';
     const Web3 = require('web3');
     import Big from 'big.js';
-    const avalanche = require("avalanche");
-    let bintools = avalanche.BinTools.getInstance();
+    const ezchainjs2 = require("ezchainjs2");
+    let bintools = ezchainjs2.BinTools.getInstance();
 
 
 

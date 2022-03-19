@@ -1,10 +1,10 @@
 // Sends a drop from the faucet to the given address
-import {BN} from "avalanche";
+import {BN} from "ezchainjs2";
 import {CONFIG_C, sendAvaC} from "../eth";
 const {CONFIG, avm, bintools} = require('../ava');
 const Web3 = require("web3");
 
-// sendAmount is nAVAX
+// sendAmount is nEZC
 export async function sendDrop(address: string, sendAmount: BN){
     let addressChain = getAddressChain(address)
     if(addressChain === 'X'){
@@ -28,7 +28,7 @@ export async function sendDropX(addr: string, sendAmount: BN){
     let balanceVal = new BN(balance.balance);
 
     if(sendAmount.gt(balanceVal)){
-        console.log("Insufficient funds. Remaining AVAX: ",balanceVal.toString());
+        console.log("Insufficient funds. Remaining EZC: ",balanceVal.toString());
         return {
             status: 'error',
             message: 'Insufficient funds to create the transaction. Please file an issues on the repo: https://github.com/ava-labs/faucet-site'

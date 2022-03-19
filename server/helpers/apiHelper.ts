@@ -1,6 +1,6 @@
 import {addTransaction, getApiKey, getDailyUsage} from "../db";
 import {getAddressChain, sendDrop, sendDropX} from "./helper";
-import {BN} from "avalanche";
+import {BN} from "ezchainjs2";
 import {CONFIG} from "../ava";
 import axios, {AxiosResponse} from "axios";
 import {CONFIG_C} from "../eth";
@@ -29,7 +29,7 @@ class ApiHelper{
         let available = maxUsage.sub(usage)
 
         if(available.lt(amtBN)){
-            throw new Error(`Failed to send drop. Daily token quota is reached. Remaining Quota: ${available.toString()} nAVAX`)
+            throw new Error(`Failed to send drop. Daily token quota is reached. Remaining Quota: ${available.toString()} nEZC`)
         }
 
         let txID = await sendDrop(to, amtBN)

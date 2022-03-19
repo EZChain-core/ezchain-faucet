@@ -1,7 +1,7 @@
 // Typeorm
 import {Connection, createConnection, LessThan, MoreThan} from "typeorm";
 import {ApiKey} from "./entity/ApiKey";
-import {BN} from "avalanche";
+import {BN} from "ezchainjs2";
 import {Transaction} from "./entity/Transaction";
 var md5 = require('md5');
 
@@ -44,7 +44,7 @@ async function addTransaction(key: ApiKey, amount: BN, to:string): Promise<Trans
     return res
 }
 
-// Returns how many nAVAX was sent in the past 24hours
+// Returns how many nEZC was sent in the past 24hours
 async function getDailyUsage(key: ApiKey): Promise<BN>{
     if(!dbConnection) throw new Error("No database connection.")
     let now = Date.now()
@@ -78,7 +78,7 @@ async function getApiKey(key: string): Promise<ApiKey|null>{
     return res
 }
 
-// Limit given in nAVAX
+// Limit given in nEZC
 async function createApiKey(name: string, dailyLimit: number){
     if(!dbConnection) throw new Error("No database connection.")
 
